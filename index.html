@@ -48,7 +48,7 @@
     .cluster{display:flex; align-items:center; flex-wrap:wrap; gap:1.25rem}
 
     /* ===== NAVBAR ===== */
-    header{position:sticky; top:0; z-index:50; background:var(--nav-grad); color:var(--white);}
+    header{position:fixed; top:0; width: 100%; z-index:50; background:var(--nav-grad); color:var(--white);}
     .nav{padding:.9rem 0;}
     .brand{display:flex; align-items:center; gap:.6rem; font-weight:700}
     .brand img{width:116px; height:auto}
@@ -58,7 +58,7 @@
     .cta:hover{filter:brightness(.95)}
 
     /* ===== HERO ===== */
-    .hero{position:relative; min-height:72vh; display:grid; place-items:center; text-align:center; color:#fff;}
+    .hero{position:relative; min-height:72vh; display:grid; place-items:center; text-align:center; color:#fff; padding-top: 4rem;}
     .hero::before{content:""; position:absolute; inset:0; background:url(./assets/bg.jpg) center/cover no-repeat;}
     .hero::after{content:""; position:absolute; inset:0; background:var(--hero-overlay);}  
     .hero-inner{position:relative; z-index:1;}
@@ -276,16 +276,42 @@
       </div>
     </section>
 
-    <!-- ================= QUIÉNES SOMOS (simple anchor target per nav) ================= -->
-    <section id="quienes" class="section" aria-labelledby="q-h">
+    <!-- ================= QUIÉNES SOMOS ================= -->
+    <section id="quienes" class="section" aria-labelledby="qs-h">
       <div class="container">
-        <h2 id="q-h">NOTAS Y CONSIDERACIONES</h2>
-        <ul style="max-width:70ch; margin-inline:auto; line-height:1.9">
-          <li>Si el texto queda grande, podemos bajar el tamaño global ligeramente.</li>
-          <li>Tipografía flexible; podemos evaluar alternativas si lo prefieres.</li>
-          <li>Ajusté paddings/spacing para que en desktop y móvil respire bien.</li>
-          <li>Podemos animar sutilmente el gradiente y la aparición de tarjetas.</li>
-        </ul>
+        <h2 id="qs-h">¿QUIÉNES SOMOS?</h2>
+        <div class="feature" style="grid-template-columns: 1fr 1fr; align-items: start;">
+          <!-- Left: image -->
+          <div>
+            <img
+              src="./assets/equipo.png"
+              alt="Ingeniera trabajando en laboratorio Novak Technologies"
+              style="border-radius: 14px; box-shadow: var(--shadow);"
+            />
+          </div>
+
+          <!-- Right: text -->
+          <div>
+            <p>
+              Ubicada en Chihuahua, México, Novak diseña y fabrica productos de conversión de energía
+              y basados en microprocesadores desde 1993.
+            </p>
+
+            <p>
+              Novak se dedica a suministrar fuentes de alimentación industriales personalizadas y
+              estándar con características específicas para las áreas de galvanoplastia, electroquímica,
+              MEMS (nanotecnología), electromecanizado, semiconductores y alimentación de pulsos
+              especiales. Novak también ofrece servicios de diseño y fabricación de marca propia.
+            </p>
+
+            <p>
+              Con empleados clave arraigados en la industria de fabricación y diseño de conversión de
+              energía OEM, Novak ha proporcionado constantemente soluciones innovadoras y sigue
+              comprometida con la mejora continua, el desarrollo de productos y el servicio a sus
+              clientes y a los usuarios finales de los productos.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
