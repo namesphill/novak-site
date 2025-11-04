@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <!--
+    =============================================================
+    Novak Technologies — Landing 1:1 from Canva (single file)
+    =============================================================
+    Notes for Felipe:
+    - This is a single-page site that mirrors your Canva sections in scroll order.
+    - Replace EVERY placeholder CANVA_URL_HERE with the SAME image URL you copy from Canva (right‑click > Copy image address). You said you'll host locally later — cool; keep the same paths.
+    - Typography approximates the design (Montserrat). Spacing, sizes, gradients, and radius match the screenshots.
+    - Nav anchors: Productos (#productos), Servicios (#servicios), Quiénes somos (#quienes), EN/ES is a dummy toggle.
+    - Contact button scrolls to #contacto.
+    - The “Productos subpage” comps are represented as an optional section linked from the product cards; keep if you want the deep detail inline.
+  -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Novak Technologies</title>
+  <meta name="description" content="Innovación en diseño electrónico. Especialistas en rectificadores y fuentes de poder." />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --blue-1:#6aa4ff; /* light */
+      --blue-2:#2a4a88; /* dark */
+      --ink:#0b0f1a;
+      --ink-2:#10131d;
+      --text:#0b0f1a;
+      --muted:#475569;
+      --white:#ffffff;
+      --card-grad: linear-gradient(180deg,#79a9ff 0%, #203a71 100%);
+      --nav-grad: linear-gradient(90deg,#2b4b89 0%,#6aa4ff 100%);
+      --hero-overlay: rgba(18,28,45,.55);
+      --radius-strong: 18px;
+      --radius-soft: 14px;
+      --radius-pill: 999px;
+      --shadow: 0 12px 40px rgba(0,0,0,.18);
+      --maxw: 1200px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Montserrat,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial; color:var(--text); line-height:1.6; background:#fff}
+    img{max-width:100%;display:block}
+    a{color:inherit}
+    .container{width:min(100% - 2.5rem, var(--maxw)); margin-inline:auto}
+    .cluster{display:flex; align-items:center; flex-wrap:wrap; gap:1.25rem}
+
+    /* ===== NAVBAR ===== */
+    header{position:sticky; top:0; z-index:50; background:var(--nav-grad); color:var(--white);}
+    .nav{padding:.9rem 0;}
+    .brand{display:flex; align-items:center; gap:.6rem; font-weight:700}
+    .brand img{width:116px; height:auto}
+    .nav-links{margin-left:auto; align-items:center}
+    .nav-links a{color:#eaf1ff; text-decoration:none; font-weight:600}
+    .cta{background:#fff;color:#0b0f1a !important;padding:.75rem 1.1rem;border-radius:var(--radius-pill);font-weight:700;text-decoration:none;}
+    .cta:hover{filter:brightness(.95)}
+
+    /* ===== HERO ===== */
+    .hero{position:relative; min-height:72vh; display:grid; place-items:center; text-align:center; color:#fff;}
+    .hero::before{content:""; position:absolute; inset:0; background:url(./assets/bg.jpg) center/cover no-repeat;}
+    .hero::after{content:""; position:absolute; inset:0; background:var(--hero-overlay);}  
+    .hero-inner{position:relative; z-index:1;}
+    .hero h1{font-weight:800; letter-spacing:.2px; font-size:clamp(2rem, 2.5vw + 1.5rem, 4.2rem); margin:.25rem 0 .75rem}
+    .hero p{font-size:clamp(1rem, .6vw + .9rem, 1.25rem); opacity:.95}
+    .btn-white{display:inline-flex; align-items:center; justify-content:center; background:#fff; color:#0b0f1a; padding:.9rem 1.1rem; border-radius:var(--radius-pill); font-weight:700; text-decoration:none; margin-top:1.25rem;}
+
+    .down-arrow{margin-top:2.5rem; font-size:1.5rem; opacity:.9; display:flex; justify-content:center; align-items:center;}
+
+    /* ===== COMPANY STRAP (blue gradient block with centered text) ===== */
+    .strap{background:var(--nav-grad); color:#e9f2ff; padding:3.25rem 0; text-align:center}
+    .strap p{margin:.8rem auto; max-width:68ch}
+
+    /* ===== SECTION TITLES ===== */
+    .section{padding:4.5rem 0}
+    .section h2{font-size:clamp(1.8rem, 1.6vw + 1.2rem, 3rem); text-align:center; margin:0 0 2.5rem; letter-spacing:.03em; font-weight:800}
+
+    /* ===== SERVICES CARDS (three gradient cards) ===== */
+    .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:2rem}
+    @media (max-width: 980px){.cards{grid-template-columns:1fr}}
+    .card{background:var(--card-grad); color:#f6fbff; border-radius:24px; padding:2rem; box-shadow:var(--shadow)}
+    .card h3{font-size:1.6rem; margin:.2rem 0 1rem; font-weight:700}
+    .card p{opacity:.95}
+    .card ul{margin:0; padding-left:1.1rem}
+
+    /* ===== PRODUCT FEATURE (image left, copy right) ===== */
+    .feature{display:grid; gap:2rem; grid-template-columns:1.2fr 1fr; align-items:center}
+    @media (max-width: 980px){.feature{grid-template-columns:1fr}}
+    .feature img{border-radius:14px; box-shadow:var(--shadow)}
+    .feature p{max-width:60ch}
+
+    /* ===== PRODUCT CARDS (three with “Ver más”) ===== */
+    .p-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin-top:2rem}
+    @media (max-width: 980px){.p-grid{grid-template-columns:1fr}}
+    .p-card{background:var(--card-grad); color:#f5fbff; border-radius:18px; padding:1.6rem; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow)}
+    .p-card h4{font-size:1.45rem; margin:0 0 .5rem}
+    .p-meta{opacity:.95}
+    .p-more{margin-top:1.25rem; text-align:right; font-weight:700}
+
+    /* ===== CONTACT ===== */
+    .contact-grid{display:grid; grid-template-columns:1fr 1.4fr; gap:2.5rem}
+    @media (max-width: 1000px){.contact-grid{grid-template-columns:1fr}}
+    .contact-col h4{margin:1rem 0 .5rem}
+    .rule{height:1px;background:#cfd7e6; max-width:360px}
+
+    form .row{display:grid; grid-template-columns:1fr 1fr; gap:1.2rem}
+    @media (max-width: 720px){form .row{grid-template-columns:1fr}}
+    label{display:block; font-weight:600; margin:.25rem 0 .35rem}
+    input, textarea{width:100%; padding:1rem; border-radius:14px; border:2px solid #345199; outline:none; box-shadow:inset 0 0 0 1px rgba(255,255,255,.2)}
+    textarea{min-height:180px; resize:vertical}
+    .submit{margin-top:1rem; display:flex; justify-content:flex-end}
+    .btn-grad{background:var(--nav-grad); color:#fff; padding:.9rem 1.4rem; border:none; border-radius:14px; font-weight:700; cursor:pointer}
+
+    /* ===== FOOTER ===== */
+    footer{padding:2rem 0; color:#5b6679; text-align:center}
+  </style>
+</head>
+<body>
+  <!-- ================= NAV ================= -->
+  <header>
+    <nav class="container cluster nav">
+      <a class="brand" href="#top" aria-label="Novak Technologies">
+        <!-- Logo from Canva -->
+        <img src="./assets/logo_dark.png" alt="Novak Technologies" />
+      </a>
+      <div class="cluster nav-links" role="navigation" aria-label="primary">
+        <a href="#productos">Productos</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#quienes">Quiénes somos</a>
+        <a href="#">EN/ES</a>
+        <a class="cta" href="#contacto">Contáctanos</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- ================= HERO ================= -->
+    <section class="hero" aria-label="Hero">
+      <div class="hero-inner container">
+        <h1>Innovación en diseño electrónico</h1>
+        <p>Especialistas en el diseño y fabricación de fuentes de poder.</p>
+        <a class="btn-white" href="#productos">Nuestros productos</a>
+        <div class="down-arrow" aria-hidden="true"><img src="./assets/arrow-down-90.png" alt="Flecha abajo" width="40" height="40" /></div>
+      </div>
+    </section>
+
+    <!-- ========= COMPANY STRAP (blue gradient copy block) ========= -->
+    <section class="strap" aria-label="Sobre Novak">
+      <div class="container">
+        <p>Novak Technologies es una empresa de categoría mundial dedicada al diseño y la fabricación de productos electrónicos relacionados con la conversión de potencia y las tecnologías basadas en microprocesadores, siendo nuestro principal producto los rectificadores.</p>
+        <p>Contamos con un exitoso historial de suministro de soluciones innovadoras y rentables a través de nuestro diseño, fabricación y servicio al cliente.</p>
+        <p style="opacity:.85">Novak mantiene su compromiso con la mejora continua, el desarrollo de productos y el servicio a sus clientes.</p>
+      </div>
+    </section>
+
+    <!-- ================= SERVICIOS ================= -->
+    <section id="servicios" class="section" aria-labelledby="srv-h">
+      <div class="container">
+        <h2 id="srv-h">NUESTROS SERVICIOS</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>Aplicaciones personalizadas</h3>
+            <p>Novak ofrece un servicio de diseño personalizado.</p>
+            <p>Nuestra área de especialización son las fuentes de poder especiales en el rango de potencia de 10 a 20,000 Watts y los productos controlados por un microprocesador.</p>
+          </article>
+          <article class="card">
+            <h3>Servicio y asistencia técnica</h3>
+            <p>Novak ofrece servicio y asistencia técnica para productos fabricados desde 1993.</p>
+            <p>Contamos con 2 años de garantía para nuestros productos y con la capacidad de darle servicio a rectificadores externos.</p>
+          </article>
+          <article class="card">
+            <h3>Otros servicios</h3>
+            <ul>
+              <li>Montaje de PCBs de volumen medio, bajo y prototipos,</li>
+              <li>Mantenimiento y reparación de nuestras fuentes de alimentación y otras,</li>
+              <li>Diseño electrónico de PCBs,</li>
+              <li>Inserción de componentes en el PCB.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PRODUCTOS (feature + 3 cards) ================= -->
+    <section id="productos" class="section" aria-labelledby="prd-h">
+      <div class="container">
+        <h2 id="prd-h">NUESTROS PRODUCTOS</h2>
+        <div class="feature" style="margin-bottom:2.25rem">
+          <img src="./assets/dce.png" alt="Rectificador Novak" />
+          <div>
+            <p>Nuestras fuentes de poder se encuentran entre las más avanzadas del sector y han sido especialmente diseñadas para procesos electroquímicos. Se utilizan en ámbitos como el acabado de superficies, tablillas de circuito impreso, semiconductores, electroformado, los MEMS (nanotecnología) y de investigación.</p>
+            <p>Novak está dispuesta a colaborar con los clientes en diseños personalizados.</p>
+          </div>
+        </div>
+
+        <div class="p-grid">
+          <article class="p-card" id="dce">
+            <div>
+              <h4>Serie DCe</h4>
+              <p class="p-meta">Rectificadores de corriente continua de baja ondulación.<br><strong>25 - 2,000 watts</strong></p>
+            </div>
+            <div class="p-more"><a href="#detalle-dce">Ver más</a></div>
+          </article>
+          <article class="p-card" id="wsa">
+            <div>
+              <h4>Serie WSa</h4>
+              <p class="p-meta">Rectificadores de alimentación de corriente continua pulsante.<br><strong>25 - 2,000 watts</strong></p>
+            </div>
+            <div class="p-more"><a href="#detalle-wsa">Ver más</a></div>
+          </article>
+          <article class="p-card" id="ppa">
+            <div>
+              <h4>Serie PPa</h4>
+              <p class="p-meta">Rectificadores de impulsos de CC, impulsos inversos y secuenciación de ondas.<br><strong>25 - 2,000 watts</strong></p>
+            </div>
+            <div class="p-more"><a href="#detalle-ppa">Ver más</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACTO ================= -->
+    <section id="contacto" class="section" aria-labelledby="ctc-h">
+      <div class="container">
+        <h2 id="ctc-h">CONTÁCTANOS</h2>
+        <div class="contact-grid">
+          <div class="contact-col">
+            <p>Contamos con presencia en Estados Unidos y México.</p>
+            <h4>Chihuahua, México</h4>
+            <div class="rule"></div>
+            <address>
+              Av. Edo. de Hidalgo 2501-1<br>
+              Sector 01 La Junta 31304<br>
+              Chihuahua, Chih. México<br>
+              +52 (614) 292 0887<br>
+              +52 (614) 292 0889
+            </address>
+            <h4>El Paso, Texas</h4>
+            <address>
+              11449 Lake Tana Dr.<br>
+              El Paso, TX 79936<br>
+              +1 (720) 221 6712
+            </address>
+            <h4>Para más información</h4>
+            <p>Soporte técnico:<br> mrodriguez@novaktech.net</p>
+            <p>Información adicional:<br> info@novaktech.net</p>
+          </div>
+
+          <form aria-label="Formulario de contacto" onsubmit="event.preventDefault(); alert('Gracias, mensaje enviado (demo).');">
+            <div class="row">
+              <div>
+                <label for="nombre">Nombre*</label>
+                <input id="nombre" name="nombre" required />
+              </div>
+              <div>
+                <label for="apellido">Apellido*</label>
+                <input id="apellido" name="apellido" required />
+              </div>
+            </div>
+            <div>
+              <label for="empresa">Empresa*</label>
+              <input id="empresa" name="empresa" required />
+            </div>
+            <div>
+              <label for="correo">Correo electrónico*</label>
+              <input id="correo" name="correo" type="email" required />
+            </div>
+            <div>
+              <label for="mensaje">Mensaje*</label>
+              <textarea id="mensaje" name="mensaje" required></textarea>
+            </div>
+            <div class="submit"><button class="btn-grad" type="submit">Enviar mensaje</button></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= QUIÉNES SOMOS (simple anchor target per nav) ================= -->
+    <section id="quienes" class="section" aria-labelledby="q-h">
+      <div class="container">
+        <h2 id="q-h">NOTAS Y CONSIDERACIONES</h2>
+        <ul style="max-width:70ch; margin-inline:auto; line-height:1.9">
+          <li>Si el texto queda grande, podemos bajar el tamaño global ligeramente.</li>
+          <li>Tipografía flexible; podemos evaluar alternativas si lo prefieres.</li>
+          <li>Ajusté paddings/spacing para que en desktop y móvil respire bien.</li>
+          <li>Podemos animar sutilmente el gradiente y la aparición de tarjetas.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ OPTIONAL: Inline product detail to mirror subpage comps ============ -->
+    <section id="detalle-dce" class="section" aria-labelledby="d-h">
+      <div class="container">
+        <h2 id="d-h">Serie DCe</h2>
+        <div class="feature" style="grid-template-columns: .4fr 1fr; align-items:start">
+          <div style="opacity:.7">
+            <p><a href="#productos">&lt; Regresar a productos</a></p>
+            <p><a href="#detalle-wsa">Series WSa</a><br><a href="#detalle-ppa">Series PPa</a></p>
+          </div>
+          <div>
+            <img src="./assets/dce.png" alt="Rectificador Serie DCe" />
+            <div style="margin-top:1.5rem; max-width:65ch">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus gravida massa ac massa laoreet, vel luctus nibh tempus. Sed egestas pellentesque eros quis sagittis. Cras felis ipsum, eleifend id fringilla a, laoreet id leo. Vivamus auctor dui a ante pretium sagittis. Praesent eget dolor eu urna varius interdum sed sed purus. In eleifend porttitor leo, in porta neque auctor eu.</p>
+              <p>Sed aliquam quam quis justo posuere, ut consequat urna porttitor. Mauris sapien nunc, molestie ac massa sit amet, volutpat commodo tellus.</p>
+              <p style="color:#6b4dff">Más texto y luego chance una gráfica o video o tabla o algo idk, pero que se pueda poner aquí, alineado igual que toda la columna.</p>
+              <div class="cluster" style="gap:1rem; margin-top:2rem; flex-wrap:wrap">
+                <a class="btn-grad" href="#">Descarga la ficha técnica</a>
+                <a class="btn-grad" href="#contacto">Obtén una cotización</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="y"></span> Novak Technologies</div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    // Smooth scroll (simple, no dependencies)
+    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+      const id=a.getAttribute('href');
+      const el=document.querySelector(id);
+      if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+    }));
+  </script>
+</body>
+</html>
