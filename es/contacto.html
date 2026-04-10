@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Contacto — Novak Technologies</title>
+  <meta name="description" content="Contacta con Novak Technologies. Oficinas en Chihuahua, México y El Paso, Texas. Soporte técnico y atención comercial." />
+
+  <link rel="icon" type="image/png" href="/assets/images/fav.png" />
+
+  <link rel="alternate" hreflang="es" href="/es/contacto.html" />
+  <link rel="alternate" hreflang="en" href="/en/contact.html" />
+  <link rel="alternate" hreflang="x-default" href="/en/index.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+</head>
+
+<body data-lang="es" data-page="contact">
+
+  <div id="site-header"></div>
+
+  <main id="top">
+
+    <section class="section" style="padding-top:8rem" aria-labelledby="ctc-h">
+      <div class="container">
+        <h2 id="ctc-h">CONTÁCTANOS</h2>
+        <div class="contact-grid">
+          <div class="contact-col">
+            <p>Contamos con presencia en Estados Unidos y México.</p>
+            <h4>Chihuahua, México</h4>
+            <div class="rule"></div>
+            <address>
+              Av. Edo. de Hidalgo 2501-1<br>
+              Sector 01 La Junta 31304<br>
+              Chihuahua, Chih. México<br>
+              +52 (614) 292 0887<br>
+              +52 (614) 292 0889
+            </address>
+            <h4>El Paso, Texas</h4>
+            <address>
+              11449 Lake Tana Dr.<br>
+              El Paso, TX 79936<br>
+              +1 (720) 221 6712
+            </address>
+            <h4>Para más información</h4>
+            <p>Soporte técnico:<br> mrodriguez@novaktech.net</p>
+            <p>Información adicional:<br> info@novaktech.net</p>
+          </div>
+
+          <form aria-label="Formulario de contacto" onsubmit="event.preventDefault(); alert('Gracias, mensaje enviado (demo).');">
+            <div class="row">
+              <div>
+                <label for="nombre">Nombre*</label>
+                <input id="nombre" name="nombre" required />
+              </div>
+              <div>
+                <label for="apellido">Apellido*</label>
+                <input id="apellido" name="apellido" required />
+              </div>
+            </div>
+            <div>
+              <label for="empresa">Empresa*</label>
+              <input id="empresa" name="empresa" required />
+            </div>
+            <div>
+              <label for="correo">Correo electrónico*</label>
+              <input id="correo" name="correo" type="email" required />
+            </div>
+            <div>
+              <label for="mensaje">Mensaje*</label>
+              <textarea id="mensaje" name="mensaje" required></textarea>
+            </div>
+            <div class="submit"><button class="btn-grad" type="submit">Enviar mensaje</button></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/components.js"></script>
+</body>
+</html>
