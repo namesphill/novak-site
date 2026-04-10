@@ -28,12 +28,64 @@ Novak Technologies is a Mexico/Texas-based B2B manufacturer of industrial power 
 
 | # | Question | Decision |
 |---|---|---|
-| 1 | Data sheet PDFs | **Placeholder buttons** — link to `#` with `title="Próximamente"` / `title="Coming soon"`. Real PDFs added later, sourced from the legacy ZIP if possible. |
+| 1 | Data sheet PDFs | **DCe: use the real PDF.** `legacy-site/es/DCeSeries.pdf` and `legacy-site/en/DCeSeries.pdf` are valid 4-page data sheets (REF2009A 26NOV14). Copy them into `/assets/docs/` and wire up the button. **WSa/PPa: placeholder buttons** with `title="Próximamente"` / `title="Coming soon"` — no legacy data sheets exist for those series. |
 | 2 | Product images for WSa/PPa | **Reuse `dce.png`** across all three product pages until client provides distinct images. |
 | 3 | Contact form placement | **Dedicated contact page only.** Home page shows a prominent CTA section (headline + benefit + button) linking to `/es/contacto.html` or `/en/contact.html`. Single source of truth for the form; lighter home page; aligns with the client's "separate pages" directive. Also include `tel:` and `mailto:` fallbacks on the home CTA. |
 | 4 | Products nav | **Products overview page** (`/es/productos/index.html`, `/en/products/index.html`) linked from the header. The overview shows all 3 series as cards; each card links to its detail page. |
 | 5 | Hosting platform | **Stay on existing cPanel.** The previous site is already there, email hosting (@novaktech.net) almost certainly uses the same MX records, and migrating DNS risks breaking business email. cPanel `.htaccess` handles 301 redirects cleanly, supports PHP for the contact form backend later, and SSL is free via AutoSSL on most providers. Cloudflare Pages is the escape hatch if the team later outgrows cPanel. |
 | 6 | WSa/PPa copy | **Adapt the DCe copy** — swap "DCe" for "WSa" / "PPa" in the opening line; otherwise identical per client's "adaptenlo pls" instruction. |
+
+---
+
+## Legacy Site Mining (from `legacy-site/`)
+
+The cPanel ZIP of Novak's previous website has been extracted and committed under `legacy-site/`. The old site is FrontPage-era HTML (circa mid-2000s, last updated 2014 based on the PDF timestamp), but it contains several assets and content blocks worth reusing:
+
+### Assets to reuse
+- **`legacy-site/es/DCeSeries.pdf`** (4 pages, ~334 KB) — real DCe data sheet in Spanish. Copy to `assets/docs/ficha-tecnica-dce.pdf`.
+- **`legacy-site/en/DCeSeries.pdf`** (4 pages, ~335 KB) — English version. Copy to `assets/docs/dce-datasheet.pdf`.
+- **`legacy-site/es/images/logos.jpg`** — collage of customer logos (433×274px) — usable as-is for a "Nuestros clientes" strip on the home or about page.
+- **`legacy-site/es/images/foto.about.jpg`, `foto.home.jpg`, `foto.products.jpg`, `foto.services.jpg`** — legacy stock photos. Lower priority: the current site already has better photos (`bg.jpg`, `equipo.png`, `dce.png`). Use only if needed as fallbacks.
+
+### Content blocks to mine
+- **General features bullet list** (from `legacy-site/es/products.htm` lines 112–130 and `legacy-site/en/products.htm` lines 108–120). Reusable verbatim on each product detail page under a "Características generales" / "General Characteristics" heading:
+  - Ambientes rudos — cámara electrónica sellada
+  - Alta eficiencia, compactas y ligeras
+  - Conmutación suave con control de fase
+  - Controles precisos de potencia
+  - Interfaz de usuario amigable (menús + pantalla alfanumérica)
+  - Interfaces para automatización (digital/analógico, PLC o computadora)
+  - Operación controlada por microprocesadores
+  - Control total de voltios y amperes
+  - Regulación contra variaciones de línea (VAC) y carga
+  - Totalizador Amp-Horas, temporizadores programables, alarmas
+  - Barras de cobre para conexiones
+  - Garantía de 2 años
+
+- **About copy** (from `legacy-site/en/about.htm`) — richer and slightly different from what's on the current site. Mentions "OEM power conversion design and manufacturing industry" and "Electrochemical, Electromachining, MEMS (Nanotechnology), Semiconductor and Specialty Pulse Power areas" + "design and manufacturing private label services". Worth merging with the current about text. ⚠ Has typos ("microprocesor", "enviroment", "commited") that should be fixed in the new site.
+
+- **Services copy** mentions past clients like Motorola, Philips, Flextronics, Visteon — usable as social proof in the services page intro.
+
+- **Customer list** (from `legacy-site/es/productusers.htm`, ~33 names) — includes recognizable names: Aerojet, Avery Dennison, AVX Corporation, General Dynamics, Motorola, Philips, Rohm Haas Electronic Materials, Semitool, Novellus Systems, Vishay Thin Films, Visteon, Custom Microwave, CIDETEQ, CIMAV, and more. **Use this for a new "Nuestros clientes" / "Our customers" section on the home page or about page** — strong social proof for a B2B industrial site.
+
+### ⚠ Critical naming inconsistency flagged for client
+
+The **legacy site and the current site have WSa and PPa swapped**:
+
+| | Current live site | Legacy site (EN) |
+|---|---|---|
+| **WSa** | DC pulsante (pulsing) | DC Pulse, Pulse Reverse, wave sequencing |
+| **PPa** | Impulsos inversos + secuenciación de ondas | DC Pulsing |
+
+In other words, what the legacy site called "PPa = pulsing" is what the current site calls "WSa = pulsing", and vice versa. Either:
+1. The current site got the two descriptions swapped by mistake when it was built
+2. Novak deliberately renamed / rebranded the two product lines (swapped letter codes)
+
+**Action:** flag to the client (Ana Laura) to confirm which is correct before we ship any real product copy. **For this implementation pass**, we will **preserve the current live site's naming** (WSa = pulsing, PPa = pulse reverse + wave sequencing), since that's what the client has been reviewing and gave feedback on. This note goes into the implementation commit message so it's not lost.
+
+### ⚠ DCe amperage range discrepancy
+
+The client-provided copy says "**fuentes DCe desde 10A hasta 2,000A**", but the DCe data sheet model table only goes up to **DCe1000-12-4 (1000A)**. Either the data sheet is outdated or the 2,000A figure is aspirational/misspoken. Preserving the client's copy as-is for now and flagging to confirm — the PDF is from 2014 and could well be outdated.
 
 ---
 
@@ -108,14 +160,9 @@ novak-site/
 
 ## Phased Implementation
 
-### Phase 0 — Commit the legacy ZIP (user action, blocking)
+### Phase 0 — Legacy content available ✅
 
-Before the rest of the work runs, the user needs to:
-1. Extract the cPanel ZIP locally
-2. Commit the extracted contents under `legacy-site/` on the `claude/plan-bilingual-site-structure-xRCte` branch
-3. Push
-
-Once the legacy files are on disk, an agent can mine them for real product descriptions, images, and data sheet source content that can replace placeholders later.
+The cPanel ZIP has been extracted and committed under `legacy-site/`. Key reusable assets are inventoried in the **Legacy Site Mining** section above. Phase 1 can start.
 
 ### Phase 1 — Scaffold shared resources
 
@@ -123,7 +170,9 @@ Once the legacy files are on disk, an agent can mine them for real product descr
 - Extract inline JS → `assets/js/main.js`
 - Create `assets/js/components.js` with `renderHeader(lang, activePage)` and `renderFooter(lang)` — a dictionary of nav labels per language, active-link highlighting, language-switcher link computed from the current page's data attribute
 - Create `assets/images/` subfolder; move existing image files into it; update all paths
-- Create `assets/docs/` (empty — placeholder for future PDFs)
+- Create `assets/docs/` and copy the legacy DCe data sheets into it:
+  - `legacy-site/es/DCeSeries.pdf` → `assets/docs/ficha-tecnica-dce.pdf`
+  - `legacy-site/en/DCeSeries.pdf` → `assets/docs/dce-datasheet.pdf`
 - Build a single page template boilerplate that every page will start from: doctype, meta, CSS link, `<div id="header"></div>`, `<main>` with page content, `<div id="footer"></div>`, JS scripts at the bottom with `renderHeader('es', 'productos')` etc.
 
 ### Phase 2 — Spanish site (`/es/`)
@@ -155,7 +204,7 @@ Build the 7 Spanish pages using the template. Content per page:
 >
 > Nuestra especialidad está en fuentes DCe desde 10A hasta 2,000A, con opción de tener interfaz digital RS485 con aislamiento óptico, controlador de amperes-hora, control remoto y Ethernet de acuerdo a las necesidades del cliente.
 
-Page includes: breadcrumb back to products overview, sidebar cross-links to WSa and PPa, `dce.png` image, the copy above, two CTA buttons — "Descarga la ficha técnica" (placeholder `href="#"` with `title="Próximamente"`) and "Obtén una cotización" → `/es/contacto.html`.
+Page includes: breadcrumb back to products overview, sidebar cross-links to WSa and PPa, `dce.png` image, the client copy above, a "Características generales" section with the bullet list mined from `legacy-site/es/products.htm`, and two CTA buttons — "Descarga la ficha técnica" → `/assets/docs/ficha-tecnica-dce.pdf` (real PDF, not a placeholder) and "Obtén una cotización" → `/es/contacto.html`.
 
 **`/es/productos/serie-wsa.html`** — same structure as DCe. Opening line adapted: "Nuestra serie WSa está compuesta de..." — rest of the copy identical. Same `dce.png` image. Same placeholder buttons.
 
