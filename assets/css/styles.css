@@ -151,5 +151,13 @@ footer{padding:2rem 0; color:#5b6679; text-align:center}
 .product-detail .features-list{ list-style:none; padding:0; margin:1.5rem 0; }
 .product-detail .features-list li{ padding:.4rem 0; padding-left:1.5rem; position:relative; }
 .product-detail .features-list li::before{ content:"+"; position:absolute; left:0; color:var(--blue-2); font-weight:700; }
-</content>
-</invoke>
+
+/* ===== DISABLED CTA BUTTONS (placeholder state) ===== */
+.btn-grad.disabled{
+  opacity:.6;
+  cursor:not-allowed;
+  filter:saturate(.7);
+}
+.btn-grad.disabled:hover{
+  filter:saturate(.7);
+}

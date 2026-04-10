@@ -71,5 +71,3 @@
   window.initNavToggle = initNavToggle;
   window.initYear = initYear;
 })();
-</content>
-</invoke>

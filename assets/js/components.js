@@ -141,5 +141,3 @@
   // Expose for debugging
   window.NovakComponents = { renderHeader, renderFooter, PAGE_PATHS, languageSwitchURL };
 })();
-</content>
-</invoke>
