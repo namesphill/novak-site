@@ -1,0 +1,105 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="es">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Welcome to Novak Technologies</title>
+
+<style type="text/css">
+
+.initial{
+font-weight:normal;
+background-image:url(first.jpg);
+}
+
+</style>
+
+<script type="text/javascript">
+<!--
+
+/***********************************************
+* Rollover background-image button- © Dynamic Drive (www.dynamicdrive.com)
+* This notice must stay intact for use
+* Visit http://www.dynamicdrive.com/ for full source code
+***********************************************/
+
+//Specify optional button target: "_new" for new window, or name of FRAME target (ie "myframe")
+var buttontarget=""
+
+if (document.images){
+after=new Image()
+//Enter image path of second image (for preloading purposes):
+after.src="second.jpg"
+}
+
+function change2(e, image){
+var el=window.event? event.srcElement: e.target
+if (el.tagName=="INPUT"&&el.type=="button")
+el.style.backgroundImage="url"+"('"+image+"')"
+}
+
+function jumpto2(url){
+if (buttontarget=="")
+window.location=url
+else if (buttontarget=="_new")
+window.open(url)
+else
+parent[buttontarget].location=url
+}
+
+//-->
+</script>
+
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="30" leftmargin="35" rightmargin="0" bottommargin="0">
+
+<table border="0" width="435" id="table1" cellspacing="0" cellpadding="0">
+	<tr>
+		<td>
+<img border="0" src="images/foto.services.jpg" width="440" height="150"><br>
+		<br>
+		<font color="#487484">
+		<span style="font-family: Arial; font-size: 12pt; font-weight: 700" lang="en-us">
+		Services</span></font><p class="MsoNormal">
+<font face="Arial" style="font-size: 9pt"><font color="#487484"><b>Custom 
+Applications</b><br>
+<br>
+</font><font color="#666666">Novak has designed and deliver many different 
+custom products to meet custom specifications. Main areas of expertise are 
+specialty power supplies in the power range of 10 to 20,000 Watts and 
+microprocessor controlled products. We have provided this service for world 
+class companies such as Visteon, Motorola, Philips, Flextronics, Honeywell and 
+others. Building upon the many custom and standard products can often result in 
+quality cost effective solutions.<br>
+</font>
+<br>
+<br>
+<br>
+<b>
+<font color="#487484">Service and Technical Support</font></b><br>
+<br>
+<font color="#666666">Novatek provides service and technical support for 
+products manufactured since 1993.</font><font color="#3F3F3F"><br>
+</font>
+<br>
+<br>
+<font color="#487484"><b>Assembly services:</b><br>
+</font><br>
+<font color="#666666">Mid, Low and Prototype volume assemby services are 
+provided by Novak’s manufacturing plant.<br>
+&nbsp;</font></font></p>
+
+<form onMouseover="change2(event, 'second.jpg')" onMouseout="change2(event, 'first.jpg')">
+<input type="button" value="Go back" class="initial" onClick="jumpto2('welcome.htm')"> 
+<input type="button" value="Product Users" class="initial" onClick="jumpto2('productusers.htm')"><br>
+</form>
+
+
+</td>
+	</tr>
+</table>
+
+</body>
+
+</html>

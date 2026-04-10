@@ -1,0 +1,89 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="es">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Welcome to Novak Technologies</title>
+
+<style type="text/css">
+
+.initial{
+font-weight:normal;
+background-image:url(first.jpg);
+}
+
+</style>
+
+<script type="text/javascript">
+<!--
+
+/***********************************************
+* Rollover background-image button- © Dynamic Drive (www.dynamicdrive.com)
+* This notice must stay intact for use
+* Visit http://www.dynamicdrive.com/ for full source code
+***********************************************/
+
+//Specify optional button target: "_new" for new window, or name of FRAME target (ie "myframe")
+var buttontarget=""
+
+if (document.images){
+after=new Image()
+//Enter image path of second image (for preloading purposes):
+after.src="second.jpg"
+}
+
+function change2(e, image){
+var el=window.event? event.srcElement: e.target
+if (el.tagName=="INPUT"&&el.type=="button")
+el.style.backgroundImage="url"+"('"+image+"')"
+}
+
+function jumpto2(url){
+if (buttontarget=="")
+window.location=url
+else if (buttontarget=="_new")
+window.open(url)
+else
+parent[buttontarget].location=url
+}
+
+//-->
+</script>
+
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="30" leftmargin="35" rightmargin="0" bottommargin="0">
+
+<table border="0" width="435" id="table1" cellspacing="0" cellpadding="0">
+	<tr>
+		<td>
+<img border="0" src="images/foto.services.jpg" width="440" height="150"><br>
+		<br>
+		<font color="#487484">
+		<span style="font-family: Arial; font-size: 12pt; font-weight: 700" lang="en-us">
+		Servicios</span></font><p class="MsoNormal">
+<font face="Arial" style="font-size: 9pt"><font color="#487484"><b>Aplicaciones 
+Específicas</b><br>
+<br>
+</font><font color="#666666">Novak ha diseñado gran variedad de productos para 
+aplicaciones especificas. Las áreas de mayor experiencia son fuentes de poder 
+especializadas en el rango de 10 a 20,000 Watts y productos controlados por 
+microprocesadores. <br>
+Novak ha proporcionado estos servicios a empresas de prestigio como Motorola, 
+Phillips, Flextronics, Visteon y muchas más. Usando como base los productos a la 
+medida y estándar, nos permite lograr soluciones efectivas.</font><br>
+&nbsp;</font></p>
+
+<form onMouseover="change2(event, 'second.jpg')" onMouseout="change2(event, 'first.jpg')">
+<input type="button" value="Regresar" class="initial" onClick="jumpto2('welcome.htm')"> 
+<input type="button" value="Nuestros Usuarios" class="initial" onClick="jumpto2('productusers.htm')"><br>
+</form>
+
+
+</td>
+	</tr>
+</table>
+
+</body>
+
+</html>
