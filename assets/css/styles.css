@@ -110,7 +110,9 @@ header{
 
 /* ===== CONTACT ===== */
 .contact-grid{display:grid; grid-template-columns:1fr 1.4fr; gap:2.5rem}
-@media (max-width: 1000px){.contact-grid{grid-template-columns:1fr}}
+@media (max-width: 1000px){.contact-grid{grid-template-columns:1fr}
+  .contact-grid form{order:-1}
+}
 .contact-col h4{margin:1rem 0 .5rem}
 .rule{height:1px;background:#cfd7e6; max-width:360px}
 
