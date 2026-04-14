@@ -62,7 +62,7 @@ header{
   .cta{ align-self:stretch; text-align:center; margin-top:.5rem; }
   .menu-btn{ display:inline-flex; }
 }
-@media (prefers-reduced-motion:no-preference){
+@media (max-width: 900px) and (prefers-reduced-motion:no-preference){
   .nav-links{ transition:opacity .2s ease; }
   header:not([data-open="true"]) .nav-links{ opacity:0; }
   header[data-open="true"] .nav-links{ opacity:1; }
