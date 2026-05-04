@@ -1,0 +1,300 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="es">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Welcome to Novak Technologies</title>
+<style type="text/css">
+<!--
+.style10 {color: #666666; padding: 5px; }
+.style8 {color: #CCCCCC;
+	padding: 5px;
+}
+.style9 {color: #666666}
+.titulo {color: #CCCCCC;
+	padding: 5px;
+}
+.style12 {color: #666666; font-size: 12px; }
+.style13 {font-size: 12px}
+.style14 {color: #666666; padding: 5px; font-size: 12px; }
+.Estilo1 {
+	color: #487484;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+<script LANGUAGE="JavaScript">
+
+    <!---    
+
+        function vacia(lista){
+
+            while (lista.length > 0)
+
+                lista.options.length--;
+
+        }    
+
+            
+
+        function agrega(lista, valor, texto){
+
+            lista.options[lista.length] = new Option(texto,valor);    
+
+        }    
+
+            
+
+        function actualiza(lista, sublista, campo){
+
+            var s = new String;
+
+            var nuevoitem = new String;
+
+        
+
+            vacia(sublista);
+
+                
+
+            s = lista.options[lista.options.selectedIndex].value + ':';        
+
+            campo.value =  s.substr(0,s.search('::'));    
+
+            s = s.substr(s.search('::')+2,s.length);
+
+            
+
+                        
+
+            while (s.search(':') >= 0){
+
+                nuevoitem = s.substr(0,s.search(':'));
+
+                            
+
+                if (nuevoitem != '')
+
+                    agrega(sublista, nuevoitem.substr(0,nuevoitem.search(';')), nuevoitem.substr(nuevoitem.search(';')+1,nuevoitem.length));
+
+                    
+
+                s = s.substr(s.search(':')+1,s.length);
+
+            }
+
+            sublista.options.selectedIndex = 0;
+
+        }
+
+
+
+    function setlista(lista, sublista, valorlista, valorsublista, valorEstado)
+
+        {
+
+            var i = 0;
+
+            var s = new String;
+
+            if (valorsublista != 0)
+
+            for (i=0;i<=lista.length;i++){
+
+                s = lista.options[i].value;
+
+                if (s.search(':'+valorsublista+';') > -1)
+
+                    break;
+
+            }            
+
+            else
+
+            for (i=0;i<=lista.length;i++)
+
+                {
+
+                    s = lista.options[i].value;
+
+                    if (s.search( valorEstado+'::') > -1)
+
+                        break;
+
+                }
+
+                        
+
+            lista.options[i].selected = -1;
+
+            actualiza(lista, sublista, valorlista);
+
+        
+
+            for (i=0;i<=sublista.length;i++)
+
+                if (sublista.options[i].value == valorsublista)
+
+                    break;
+
+            sublista.options[i].selected = -1;            
+
+            
+
+        }
+
+
+
+            
+
+//--->
+
+</script>
+<body bgcolor="#FFFFFF" topmargin="30" leftmargin="35" rightmargin="0" bottommargin="0">
+
+<table border="0" width="435" id="table1" cellspacing="0" cellpadding="0">
+	<tr>
+		<td>
+<img border="0" src="images/foto.contact.jpg" width="440" height="150"><br>
+		<br>
+		<font color="#487484">
+<span style="font-family: Arial; font-size: 12pt; font-weight: 700" lang="en-us">
+Cont&aacute;ctenos</span></font>
+		<table border="0" width="100%" id="table2">
+          <tr>
+            <td style="padding-left: 10px" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td width="64%"><form method="POST" action="enviar.php">
+                        <font size="4">
+                          <input TYPE="Hidden" NAME="EstadoId" VALUE="0">
+                        </font>
+                      <table width="395" height="281" border="0" align="center" cellpadding="0" cellspacing="0" bordercolor="#111111"  id="AutoNumber5" style="border-collapse: collapse">
+                          
+                          
+                          <tr>
+                            <td width="70" height="22" style="font-family:verdana, helvetica; font-size:11px; color:#555555"><p align="left" class="style8">
+							<font face="Arial"><span class="style12">Nombre:</span></font></td>
+                            <td colspan="3" height="22" style="font-family:verdana, helvetica; font-size:11px; color:#555555"><font size="4" face="Arial">
+                              <input name="Nombre" type="text" class="formularios" style="font-family: Verdana; font-size: 10px" tabindex="1" size="54">
+                            </font></td>
+                          </tr>
+                          <tr>
+                            <td width="70" height="22" style="font-family: verdana, helvetica; font-size: 11px; color: #555555"><p align="left" class="style8"> <span style="font-family: Arial"><span class="style12">Empresa:</span></span></td>
+                            <td colspan="3" height="22" style="font-family: verdana, helvetica; font-size: 11px; color: #555555"><font size="4" face="Arial">
+                              <input name="Empresa" type="text" class="formularios" style="font-family: Verdana; font-size: 10px" tabindex="2" size="54">
+                            </font></td>
+                          </tr>
+                          <tr>
+                            <td width="70" height="22" style="font-family: verdana, helvetica; font-size: 11px; color: #555555"><p align="left" class="style8">
+							<font face="Arial"><span class="style12">Estado:</span></font></td>
+                            <td width="128" height="22" style="font-family: verdana, helvetica; font-size: 11px; color: #555555"><font size="4" face="Arial"><b><font style="font-size: 9pt">
+                              <select name="Estado" size="1" class="formularios" onChange="actualiza(Estado, CiudadId, EstadoId);" style="font-size: 12px; font-family: Arial;" tabindex="3">
+                                <option VALUE="0::0;(Otra)" SELECTED>Selecciona </option>
+                                <option VALUE="1::0;(Otra):1;Aguascalientes"> Aguascalientes</option>
+                                <option VALUE="2::0;(Otra):2;Ensenada:3;Mexicali:4;Tijuana"> Baja Calif. Nte</option>
+                                <option VALUE="3::0;(Otra):5;La Paz">Baja Calif. Sur </option>
+                                <option VALUE="4::0;(Otra):6;Campeche:7;Cd. del Carmen"> Campeche</option>
+                                <option VALUE="7::0;(Otra):8;San Cristobal:9;Tapachula:10;Tuxtla Guti&eacute;rrez"> Chiapas</option>
+                                <option VALUE="8::0;(Otra):11;Chihuahua:12;Cuauht&eacute;moc:13;Delicias:14;Ju&aacute;rez:15;Parral"> Chihuahua</option>
+                                <option VALUE="5::0;(Otra):16;Monclova:17;Piedras Negras:18;Saltillo:19;Torre&oacute;n"> Coahuila</option>
+                                <option VALUE="6::0;(Otra):20;Colima">Colima</option>
+                                <option VALUE="9::0;(Otra):21;Distrito Federal">D.F. </option>
+                                <option VALUE="10::0;(Otra):22;Durango">Durango </option>
+                                <option VALUE="15::0;(Otra):99;Atizapan:100;Cuautitlan Izcalli:101;Chimalhuacan:102;Coacalco:103;Ecatepec:104;Huixquilucan:105;Ixtapaluca:106;L&oacute;pez Mateos:107;Metepec:108;Naucalpan:109;Nezahualcoyotl:110;Nicolas Romero:111;Satelite:112;Tecamac:113;Tepotzotlan:114;Texcoco:115;Tlanepantla:36;Toluca:116;Tultepec:117;Tultitl&aacute;n:118;Valle de Chalco:119;Zumpango"> Edo. de M&eacute;xico</option>
+                                <option VALUE="11::0;(Otra):23;Celaya:24;Guanajuato:25;Irapuato:26;Le&oacute;n:27;Salamanca"> Guanajuato</option>
+                                <option VALUE="12::0;(Otra):28;Acapulco:29;Chilpancingo:30;Iguala"> Guerrero</option>
+                                <option VALUE="13::0;(Otra):31;Pachuca:32;Tulancingo"> Hidalgo</option>
+                                <option VALUE="14::0;(Otra):91;Autlan:33;Ciudad Guzm&aacute;n:34;Guadalajara:92;Lagos de Moreno:93;Ocotlan:35;Puerto Vallarta:94;Tepatitlan:95;Tlaquepaque:96;Tonala:97;Zapopan:98;Zapotlanejo"> Jalisco</option>
+                                <option VALUE="16::0;(Otra):37;Apatzing&aacute;n:38;Morelia:39;Uruapan:40;Zamora"> Michoac&aacute;n</option>
+                                <option VALUE="17::0;(Otra):41;Cuautla:42;Cuernavaca"> Morelos</option>
+                                <option VALUE="18::0;(Otra):43;Tepic">Nayarit</option>
+                                <option VALUE="19::0;(Otra):82;Apodaca:83;Cadereyta:84;Escobedo:85;Guadalupe:86;Linares:87;Montemorelos:44;Monterrey:89;San Nicolas:90;San Pedro:88;Santa Catarina"> Nuevo Le&oacute;n</option>
+                                <option VALUE="20::0;(Otra):45;Oaxaca">Oaxaca</option>
+                                <option VALUE="21::0;(Otra):46;Atlixco:47;Puebla:48;Tehuac&aacute;n"> Puebla</option>
+                                <option VALUE="22::0;(Otra):49;Quer&eacute;taro">Quer&eacute;taro </option>
+                                <option VALUE="23::0;(Otra):50;Canc&uacute;n:51;Chetumal"> Quintana Roo</option>
+                                <option VALUE="24::0;(Otra):52;Ciudad Valles:53;San Lu&iacute;s Potos&iacute;"> San Lu&iacute;s Potos&iacute;</option>
+                                <option VALUE="25::0;(Otra):54;Culiac&aacute;n:55;Los Mochis:56;Mazatl&aacute;n"> Sinaloa</option>
+                                <option VALUE="26::0;(Otra):57;Ciudad Obreg&oacute;n:58;Guaymas:59;Hermosillo:60;Navojoa:61;Nogales:62;San Lu&iacute;s R&iacute;o Col."> Sonora</option>
+                                <option VALUE="27::0;(Otra):63;Villahermosa">Tabasco </option>
+                                <option VALUE="28::0;(Otra):64;Ciudad Mante:65;Ciudad Victoria:66;Matamoros:67;Nuevo Laredo:68;Reynosa:69;Tampico"> Tamaulipas</option>
+                                <option VALUE="29::0;(Otra):81;Tlaxcala">Tlaxcala </option>
+                                <option VALUE="30::0;(Otra):70;Coatzacoalcos:71;C&oacute;rdoba:72;Minatitl&aacute;n:73;Orizaba:74;Poza Rica:75;Tuxpam:76;Veracruz:77;Xalapa"> Veracruz</option>
+                                <option VALUE="31::0;(Otra):78;M&eacute;rida">Yucat&aacute;n </option>
+                                <option VALUE="32::0;(Otra):79;Fresnillo:80;Zacatecas"> Zacatecas</option>
+                              </select>
+                            </font></b></font></td>
+                            <td width="61" height="22" style="font-family: verdana, helvetica; font-size: 11px; color: #555555"><p align="left" class="style8">
+							<font face="Arial"><span class="style13"><span class="style9">Ciudad:</span></span></font></td>
+                            <td width="136" height="22" style="font-family: verdana, helvetica; font-size: 11px; color: #555555"><font size="4" face="Arial"><b><font style="font-size: 9pt">
+                              <select name="CiudadId" size="1" class="formularios" style="font-size: 12px; font-family: Arial" tabindex="4">
+                                <option value="0">(Otra)</option>
+                              </select>
+                            </font></b></font></td>
+                          </tr>
+                          <tr>
+                            <td width="70" height="22" style="font-family: verdana, helvetica; font-size: 11px; color: #555555"><p align="left" class="style10"> 
+							<font face="Arial"><span class="style13">Tel&eacute;fono:</span></font></td>
+                            <td width="128" height="22" style="font-family: verdana, helvetica; font-size: 11px; color: #555555"><font size="4" face="Arial">
+                              <input name="Lada1" type="text" class="formularios" style="font-family: Verdana; font-size: 10px" tabindex="5" size="3">
+                              <input name="Telefono1" type="text" class="formularios" style="font-family: Verdana; font-size: 10px" tabindex="6" size="13">
+                            </font></td>
+                            <td width="61" height="22" style="font-family: verdana, helvetica; font-size: 11px; color: #555555"><p align="left" class="style14"> 
+							<font face="Arial">Celular:</font></td>
+                            <td width="136" height="22" style="font-family: verdana, helvetica; font-size: 11px; color: #555555"><font size="4" face="Arial">
+                              <input name="Lada2" type="text" class="formularios" style="font-family: Verdana; font-size: 10px" tabindex="7" size="3">
+                              <input name="Telefono2" type="text" class="formularios" style="font-family: Verdana; font-size: 10px" tabindex="8" size="13">
+                            </font></td>
+                          </tr>
+                          <tr>
+                            <td width="70" height="22" style="font-family: verdana, helvetica; font-size: 11px; color: #555555"><p align="left" class="style8">
+							<font face="Arial"><span class="style12">Email: </span></font></td>
+                            <td colspan="3" height="22" style="font-family: verdana, helvetica; font-size: 11px; color: #555555"><font size="4" face="Arial">
+                              <input name="Email" type="text" class="formularios" style="font-family: Verdana; font-size: 10px" tabindex="9" size="54">
+                            </font></td>
+                          </tr>
+                          <tr>
+                            <td width="70" valign="top" style="font-family: verdana, helvetica; font-size: 11px; color: #555555" height="117"><p align="left" class="style8">
+							<font face="Arial"><span class="style12">Mensaje:</span></font></td>
+                            <td colspan="3" valign="top" style="padding-bottom: 0; font-family:verdana, helvetica; font-size:11px; color:#555555" height="117"><font size="4" face="Arial">
+                              <textarea name="Mensaje" cols="53" rows="6" class="formularios" style="font-family: Verdana; font-size: 10px; color: #000000" tabindex="10"></textarea>
+                              </font> <font size="4">
+                                <input type="submit" value="Enviar Correo" name="B1" tabindex="11">
+                                &nbsp;
+                                <input type="reset" value="Limpiar" name="B2" tabindex="12">
+                              </font></td>
+                          </tr>
+                      </table>
+                    </form></td>
+                  </tr>
+                </table>
+            </td>
+          </tr>
+        </table>
+		<p><font style="font-size: 9pt; font-weight: 700" face="Arial" color="#487484">Novak Technologies</font><font color="#666666" style="font-size: 9pt" face="Arial"><br>
+  		Ave. Estado de Hidalgo 2501<br>
+  Chihuahua, Chihuahua, MX <br>
+  Código Postal 31330<br>
+		<br>
+		</font><font style="font-size: 9pt" face="Arial"><span class="Estilo1">Correo Electr&oacute;nico</span></font><font color="#666666" style="font-size: 9pt" face="Arial"> <br>
+		info@novaktech.net<br>
+        <br>
+        </font><font style="font-size: 9pt" face="Arial" color="#487484"><b>
+		Teléfonos:</b></font><br>
+        
+        <font color="#666666" style="font-size: 9pt" face="Arial">+52 (614) 292-0887</font><br>
+        <font color="#666666" style="font-size: 9pt" face="Arial">+52 (614) 292-0889</font>
+
+  </p>
+</td>
+	</tr>
+</table>
+
+<p><font color="#666666" style="font-size: 9pt" face="Arial"><br>
+<br>
+&nbsp;</font></p>
+
+</body>
+
+</html>

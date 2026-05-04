@@ -1,0 +1,111 @@
+<!doctype html>
+<!--
+  =============================================================
+  Novak Technologies — Bilingual page template (Phase 1 scaffold)
+  =============================================================
+
+  HOW TO USE THIS TEMPLATE
+  ------------------------
+  This is a REFERENCE starting point for every page in /es/ and /en/.
+  Copy this file to the destination path, then customize the marked spots.
+
+  Each page MUST set the correct values for:
+    1. <html lang="...">                          — "es" or "en"
+    2. <title>                                    — unique per page
+    3. <meta name="description">                  — unique per page
+    4. <link rel="alternate" hreflang="...">      — point to the OTHER language's equivalent page
+    5. <link rel="canonical" href="...">          — absolute URL once the production domain is known (leave as-is for now)
+    6. <body data-lang="..." data-page="...">     — drives header rendering in components.js
+       - data-lang  must be "es" or "en"
+       - data-page  must be one of: home | products | product-dce | product-wsa | product-ppa | services | about | contact
+
+  The header and footer are INJECTED AT RUNTIME by /assets/js/components.js.
+  Do NOT hand-write header/footer markup in the page — just leave the
+  <div id="site-header"></div> and <div id="site-footer"></div> placeholders
+  in place and components.js will replace them with the correct localized
+  markup (including the active nav link and the language switcher target).
+
+  SCRIPT LOAD ORDER MATTERS:
+    main.js MUST load before components.js, because components.js calls
+    window.initNavToggle() after injecting the header, and initNavToggle is
+    defined in main.js.
+
+  All asset paths are ABSOLUTE (/assets/…) so the same markup works from any
+  depth (e.g. /es/productos/serie-dce.html and /en/index.html both work).
+-->
+<html lang="es"><!-- CUSTOMIZE: "es" or "en" -->
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- CUSTOMIZE: unique title per page -->
+  <title>Novak Technologies</title>
+
+  <!-- CUSTOMIZE: unique meta description per page (max ~160 chars) -->
+  <meta name="description" content="Innovación en diseño electrónico. Especialistas en rectificadores y fuentes de poder." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/assets/images/fav.png" />
+
+  <!--
+    CUSTOMIZE: hreflang alternates.
+    Every page must link to its counterpart in the other language, plus a
+    self-reference and an x-default (which points to the English home per the
+    project decision that English is the default language).
+
+    Example for /es/productos/serie-dce.html:
+      <link rel="alternate" hreflang="es" href="/es/productos/serie-dce.html" />
+      <link rel="alternate" hreflang="en" href="/en/products/dce-series.html" />
+      <link rel="alternate" hreflang="x-default" href="/en/index.html" />
+  -->
+  <link rel="alternate" hreflang="es" href="/es/index.html" />
+  <link rel="alternate" hreflang="en" href="/en/index.html" />
+  <link rel="alternate" hreflang="x-default" href="/en/index.html" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Shared stylesheet -->
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+</head>
+
+<!--
+  CUSTOMIZE: data-lang and data-page attributes.
+  components.js reads these on DOMContentLoaded to inject the correct header
+  (localized nav labels, active-link highlight, language switcher target).
+
+  Valid data-page values:
+    home | products | product-dce | product-wsa | product-ppa | services | about | contact
+-->
+<body data-lang="es" data-page="home">
+
+  <!-- Header placeholder — replaced at runtime by components.js. Do not edit. -->
+  <div id="site-header"></div>
+
+  <main id="top">
+    <!--
+      =========================================================
+      PAGE CONTENT GOES HERE
+      =========================================================
+      Use semantic <section> blocks, the shared CSS classes from styles.css
+      (.container, .section, .cards, .card, .feature, .p-grid, .p-card,
+      .cta-section, .product-detail, etc.), and absolute asset paths
+      (/assets/images/... and /assets/docs/...).
+    -->
+  </main>
+
+  <!-- Footer placeholder — replaced at runtime by components.js. Do not edit. -->
+  <div id="site-footer"></div>
+
+  <!--
+    Script load order:
+      1) main.js      — defines window.initNavToggle and window.initYear
+      2) components.js — injects header/footer, then calls window.initNavToggle()
+    Do not reorder.
+  -->
+  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/components.js"></script>
+</body>
+</html>

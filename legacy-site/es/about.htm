@@ -1,0 +1,95 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="es">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Welcome to Novak Technologies</title>
+
+<style type="text/css">
+
+.initial{
+font-weight:normal;
+background-image:url(first.jpg);
+}
+
+</style>
+
+<script type="text/javascript">
+<!--
+
+/***********************************************
+* Rollover background-image button- © Dynamic Drive (www.dynamicdrive.com)
+* This notice must stay intact for use
+* Visit http://www.dynamicdrive.com/ for full source code
+***********************************************/
+
+//Specify optional button target: "_new" for new window, or name of FRAME target (ie "myframe")
+var buttontarget=""
+
+if (document.images){
+after=new Image()
+//Enter image path of second image (for preloading purposes):
+after.src="second.jpg"
+}
+
+function change2(e, image){
+var el=window.event? event.srcElement: e.target
+if (el.tagName=="INPUT"&&el.type=="button")
+el.style.backgroundImage="url"+"('"+image+"')"
+}
+
+function jumpto2(url){
+if (buttontarget=="")
+window.location=url
+else if (buttontarget=="_new")
+window.open(url)
+else
+parent[buttontarget].location=url
+}
+
+//-->
+</script>
+
+
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="30" leftmargin="35" rightmargin="0" bottommargin="0">
+
+<table border="0" width="435" id="table1" cellspacing="0" cellpadding="0">
+	<tr>
+		<td>
+<font color="#666666">
+<img border="0" src="images/foto.about.jpg"><br>
+		<br>
+		</font><span lang="en-us" style="font-family: Arial; font-weight: 700">
+<font color="#487484">
+Acerca de Nosotros</font></span><p class="MsoNormal">
+<font face="Arial" style="font-size: 9pt" color="#666666">Ubicada en Chihuahua, 
+México, Novak ha diseñado y manufacturado productos de potencia y 
+microprocesadores desde 1993. <br>
+<br>
+Con mas de 13 años de experiencia en diseño y fabricación de equipo electrónico 
+a la medida incluyendo software, hardware, equipos de prueba, ensamble y 
+servicios de manufactura. <br>
+<br>
+Con la experiencia y capacidad para diseñar y proveer productos para 
+aplicaciones específicas, Novak esta dedicada a proveer fuentes de poder 
+industriales estándar y hechas a la medida.<br>
+<br>
+Novak esta comprometida a ser una empresa flexible con un óptimo nivel de 
+calidad a un costo competitivo.<br>
+&nbsp;</font></p>
+
+
+<form onMouseover="change2(event, 'second.jpg')" onMouseout="change2(event, 'first.jpg')">
+<input type="button" value="Regresar" class="initial" onClick="jumpto2('welcome.htm')"> 
+<input type="button" value="Nuestros Usuarios" class="initial" onClick="jumpto2('productusers.htm')"><br>
+</form>
+
+</td>
+	</tr>
+</table>
+
+</body>
+
+</html>

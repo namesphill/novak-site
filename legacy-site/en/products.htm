@@ -1,0 +1,137 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="es">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Welcome to Novak Technologies</title>
+
+
+<style type="text/css">
+
+.initial{
+font-weight:normal;
+background-image:url(first.jpg);
+}
+
+</style>
+
+<script type="text/javascript">
+<!--
+
+/***********************************************
+* Rollover background-image button- © Dynamic Drive (www.dynamicdrive.com)
+* This notice must stay intact for use
+* Visit http://www.dynamicdrive.com/ for full source code
+***********************************************/
+
+//Specify optional button target: "_new" for new window, or name of FRAME target (ie "myframe")
+var buttontarget=""
+
+if (document.images){
+after=new Image()
+//Enter image path of second image (for preloading purposes):
+after.src="second.jpg"
+}
+
+function change2(e, image){
+var el=window.event? event.srcElement: e.target
+if (el.tagName=="INPUT"&&el.type=="button")
+el.style.backgroundImage="url"+"('"+image+"')"
+}
+
+function jumpto2(url){
+if (buttontarget=="")
+window.location=url
+else if (buttontarget=="_new")
+window.open(url)
+else
+parent[buttontarget].location=url
+}
+
+//-->
+</script>
+
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="30" leftmargin="35" rightmargin="0" bottommargin="0">
+
+<table border="0" width="435" id="table1" cellspacing="0" cellpadding="0">
+	<tr>
+		<td>
+<font color="#666666">
+<img border="0" src="images/foto.products.jpg" width="440" height="150"><br>
+		<br>
+		</font><span lang="en-us" style="font-family: Arial; font-weight: 700">
+<font color="#487484">Products</font></span><p class="MsoNormal">
+<font color="#666666" face="Arial" style="font-size: 9pt">These Power supplies 
+are among the most advanced in the industry and were specially designed for 
+electrochemical processes. Some areas where they are used: Surface finishing, 
+Printed Circuit Boards, Electronic packaging, semiconductor, electroforming, 
+electromachining, MEMS (nanotechnology) and Research). Novak is willing to work 
+together with customers on <a href="services.htm">
+<span style="text-decoration: none">
+<font color="#487484">custom designs</font></span></a>.</font></p>
+<p class="MsoNormal">
+<font color="#487484" face="Arial" style="font-size: 9pt; font-weight: 700">
+There are three families of products:</font></p>
+<table border="0" id="table2" cellspacing="0" cellpadding="3">
+	<tr>
+		<td width="296" valign="top" style="background-color: #E2ECF5">
+		<font color="#666666" face="Arial" style="font-size: 9pt"><b>New DCe series</b>
+		<br>
+		Direct Current Low Ripple DC Power supplies (rectifiers). </font></td>
+		<td style="background-color: #E2ECF5">
+
+
+	<input type="button" value="View Info" class="initial" onClick="window.open('DCeSeries.pdf', '_blank');"></td>
+	</tr>
+	<tr>
+		<td width="296">
+		<font face="Arial" style="font-size: 9pt" color="#666666"><b>PPa series
+		</b><br>
+		DC, Pulsing Power supplies.</font></td>
+		<td>
+	<input type="button" value="View Table" class="initial" onClick="jumpto2('powerpulse.htm')"></td>
+	</tr>
+	<tr>
+		<td width="296" style="background-color: #E2ECF5">
+		<font face="Arial" style="font-size: 9pt" color="#666666"><b>WSa series
+		</b><br>
+		DC, Pulse, Pulse Reverse and wave sequencing (recipe) Power supplies.</font></td>
+		<td style="background-color: #E2ECF5">
+	<input type="button" value="View Table" class="initial" onClick="jumpto2('powerreverse.htm')"></td>
+	</tr>
+</table>
+<p class="MsoNormal"><font color="#487484" face="Arial" style="font-size: 9pt">
+<br>
+<b>General Characteristics</b></font></p>
+<p class="MsoNormal"><font face="Arial" style="font-size: 9pt" color="#666666">+ 
+Environmentally Sealed Enclosure for harsh industrial environments<br>
++ Fully Adjustable Amps &amp; Voltage settings<br>
++ High Efficiency, Compact , Light-weight Design using Soft Switch mode phase 
+control. <br>
++ Pulse Power and Pulse Reverse have precision timing controls<br>
++ Friendly User Alphanumeric Interface, Menu Driven Digital Controls<br>
++ Optional Interface for automation PLC, PC Digital or Analog. <br>
++ Efficient Air Cooling <br>
++ Useful features; Amp-Time Totalizer, programmable timers, presets,alarms and 
+more.<br>
++ Copper Bus Bars for output connection<br>
++ 2-Year-Warranty.</font></p>
+<form onMouseover="change2(event, 'second.jpg')" onMouseout="change2(event, 'first.jpg')">
+<p>
+<input type="button" value="Go back" class="initial" onClick="jumpto2('welcome.htm')">
+<input type="button" value="Product Users" class="initial" onClick="jumpto2('productusers.htm')"> 
+<br>
+</p>
+</form>
+
+
+
+</td>
+	</tr>
+</table>
+
+</body>
+
+</html>
