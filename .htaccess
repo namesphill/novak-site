@@ -1,4 +1,0 @@
-# Applied via cPanel console on 2026-06-28.
-# Redirects bare domain root to the English home page.
-RewriteEngine On
-RewriteRule ^$ /en/ [R=301,L]
