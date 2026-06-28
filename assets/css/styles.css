@@ -163,3 +163,10 @@ footer{padding:2rem 0; color:#5b6679; text-align:center}
 .btn-grad.disabled:hover{
   filter:saturate(.7);
 }
+.btn-white.disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+.btn-white.disabled:hover{
+  filter:none;
+}

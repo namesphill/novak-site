@@ -42,38 +42,41 @@
               +52 (614) 292 0889
             </address>
             <h4>El Paso, Texas</h4>
+            <div class="rule"></div>
             <address>
               11449 Lake Tana Dr.<br>
               El Paso, TX 79936<br>
               +1 (720) 221 6712
             </address>
             <h4>Para más información</h4>
-            <p>Soporte técnico:<br> mrodriguez@novaktech.net</p>
-            <p>Información adicional:<br> info@novaktech.net</p>
+            <div class="rule"></div>
+            <p>Soporte técnico:<br> <a href="mailto:mrodriguez@novaktech.net">mrodriguez@novaktech.net</a></p>
+            <p>Información adicional:<br> <a href="mailto:info@novaktech.net">info@novaktech.net</a></p>
           </div>
 
-          <form aria-label="Formulario de contacto" onsubmit="event.preventDefault(); alert('Gracias, mensaje enviado (demo).');">
+          <form id="contact-form" aria-label="Formulario de contacto">
             <div class="row">
               <div>
                 <label for="nombre">Nombre*</label>
-                <input id="nombre" name="nombre" required />
+                <input id="nombre" name="nombre" required maxlength="40" />
               </div>
               <div>
                 <label for="apellido">Apellido*</label>
-                <input id="apellido" name="apellido" required />
+                <input id="apellido" name="apellido" required maxlength="40" />
               </div>
             </div>
             <div>
               <label for="empresa">Empresa*</label>
-              <input id="empresa" name="empresa" required />
+              <input id="empresa" name="empresa" required maxlength="60" />
             </div>
             <div>
               <label for="correo">Correo electrónico*</label>
-              <input id="correo" name="correo" type="email" required />
+              <input id="correo" name="correo" type="email" required maxlength="70" />
             </div>
             <div>
               <label for="mensaje">Mensaje*</label>
-              <textarea id="mensaje" name="mensaje" required></textarea>
+              <textarea id="mensaje" name="mensaje" required maxlength="400"></textarea>
+              <small style="color:var(--muted)">Máximo 400 caracteres</small>
             </div>
             <div class="submit"><button class="btn-grad" type="submit">Enviar mensaje</button></div>
           </form>
@@ -87,5 +90,31 @@
 
   <script src="/assets/js/main.js"></script>
   <script src="/assets/js/components.js"></script>
+  <script>
+    (function () {
+      var form = document.getElementById('contact-form');
+      if (!form) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var nombre   = document.getElementById('nombre').value.trim();
+        var apellido = document.getElementById('apellido').value.trim();
+        var empresa  = document.getElementById('empresa').value.trim();
+        var correo   = document.getElementById('correo').value.trim();
+        var mensaje  = document.getElementById('mensaje').value.trim();
+
+        var subject = 'Consulta web — ' + nombre + ' ' + apellido;
+        var body =
+          'Nombre: '  + nombre + ' ' + apellido + '\n' +
+          'Empresa: ' + empresa + '\n' +
+          'Correo: '  + correo  + '\n\n' +
+          mensaje;
+
+        window.location.href =
+          'mailto:info@novaktech.net' +
+          '?subject=' + encodeURIComponent(subject) +
+          '&body='    + encodeURIComponent(body);
+      });
+    }());
+  </script>
 </body>
 </html>
